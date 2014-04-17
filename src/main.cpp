@@ -23,45 +23,49 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <ctime>
+#include <random>
+#include <opencv2/opencv.hpp>
 
 #include "munkres.h"
 
 int
 main(int argc, char *argv[]) {
-	int nrows = 101;
-	int ncols = 101;
+	int nrows = 4;
+	int ncols = 3;
 	
 	if ( argc == 3 ) {
 		nrows = atoi(argv[1]);
 		ncols = atoi(argv[2]);
 	}
 	
-	Matrix<double> matrix(nrows, ncols);
+    cv::Mat_<int> matrix(nrows, ncols);
 	
-	srandom(time(NULL)); // Seed random number generator.
-
+    //	srandom(time(NULL)); // Seed random number generator.
+	std::mt19937 eng((std::random_device())());
+	std::uniform_int_distribution<> dist(1,50);
+    
 	// Initialize matrix with random values.
 	for ( int row = 0 ; row < nrows ; row++ ) {
 		for ( int col = 0 ; col < ncols ; col++ ) {
-			matrix(row,col) = (double)random();
+			matrix(row,col) = (int)dist(eng);
 		}
 	}
-
+    
 	// Display begin matrix state.
 	for ( int row = 0 ; row < nrows ; row++ ) {
 		for ( int col = 0 ; col < ncols ; col++ ) {
 			std::cout.width(2);
-			std::cout << matrix(row,col) << ",";
+			std::cout << (int)matrix(row,col) << ",";
 		}
 		std::cout << std::endl;
 	}
 	std::cout << std::endl;
-
+    
 	// Apply Munkres algorithm to matrix.
 	Munkres m;
+    m.diag(false);
 	m.solve(matrix);
-
+    
 	// Display solved matrix.
 	for ( int row = 0 ; row < nrows ; row++ ) {
 		for ( int col = 0 ; col < ncols ; col++ ) {
@@ -70,9 +74,9 @@ main(int argc, char *argv[]) {
 		}
 		std::cout << std::endl;
 	}
-
+    
 	std::cout << std::endl;
-
+    
 	
 	for ( int row = 0 ; row < nrows ; row++ ) {
 		int rowcount = 0;
@@ -83,7 +87,7 @@ main(int argc, char *argv[]) {
 		if ( rowcount != 1 )
 			std::cerr << "Row " << row << " has " << rowcount << " columns that have been matched." << std::endl;
 	}
-
+    
 	for ( int col = 0 ; col < ncols ; col++ ) {
 		int colcount = 0;
 		for ( int row = 0 ; row < nrows ; row++ ) {
@@ -93,6 +97,6 @@ main(int argc, char *argv[]) {
 		if ( colcount != 1 )
 			std::cerr << "Column " << col << " has " << colcount << " rows that have been matched." << std::endl;
 	}
-
+    
 	return 0;
 }
