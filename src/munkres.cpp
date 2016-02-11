@@ -441,7 +441,7 @@ Munkres::solve(cv::Mat_<int> &m) {
     extendMat(mask_matrix, size, size);
     
     row_mask = new bool[size];
-    col_mask = new bool[columns];
+    col_mask = new bool[size];
     for ( unsigned int i = 0 ; i < size ; i++ ) {
         row_mask[i] = false;
     }
