@@ -63,7 +63,7 @@ main(int argc, char *argv[]) {
     
 	// Apply Munkres algorithm to matrix.
 	Munkres m;
-    m.diag(false);
+	m.diag(false);
 	m.solve(matrix);
     
 	// Display solved matrix.

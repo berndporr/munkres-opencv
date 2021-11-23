@@ -1,26 +1,33 @@
-
 munkres-opencv
 ===========
 
-An implementation of the Kuhn–Munkres algorithm forked from John Weaver
-Simplified the source code structure and ported to support OPENCV only.
-cv::Mat_<int> has been used instead of John's matrix class. It is cleaner and better support for empty matrix cases in OPENCV multiple object tracking.
+An implementation of the Kuhn–Munkres algorithm by from John Weaver.
+
+https://thereaderwiki.com/en/Munkres%27_assignment_algorithm
+
 
 
 Usage
 -----
 
 You have to have OPENCV 2.4 or above installed to use this.
-For MacOS user, Xcode project file is included.
-Basic usage can be referred from main.cpp 
+
+run `cmake .` and `make`
+
+Basic usage can be referred from `demo.cpp`
+
+Provide the assignment matrix and it will provide the minimum cost by marking the
+found matrix elements with a 0 and anything else with -1 in the
+output matrix.
+
+
 
 License
 -------
 
 Port to OPENCV by Shen Yiming 2014
+cmake by Bernd Porr 2021
 
 Copyright (c) 2007-2013 John Weaver and contributors.
 
 Licensed under the GPLv2. See the file COPYING for details.
-
-

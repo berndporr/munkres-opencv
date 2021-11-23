@@ -43,5 +43,5 @@ install(EXPORT munkres-targets
   FILE munkres-config.cmake
 )
 
-add_executable (munkresdemo src/main.cpp)
-target_link_libraries(munkresdemo munkres ${OpenCV_LIBS})
+add_executable (demo demo.cpp)
+target_link_libraries(demo munkres ${OpenCV_LIBS})
