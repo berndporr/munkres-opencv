@@ -240,7 +240,7 @@ Munkres::step3(void) {
         return 5;
     }
     
-    for ( unsigned int ncol = 0 ; ncol < matrix.cols ; ncol++ ) {
+    for ( int ncol = 0 ; ncol < matrix.cols ; ncol++ ) {
         if ( mask_matrix(saverow,ncol) == STAR ) {
             row_mask[saverow] = true; //cover this row and
             col_mask[ncol] = false; // uncover the column containing the starred zero
@@ -330,8 +330,8 @@ Munkres::step4(void) {
     }
     
     // 4. Erase all primes, uncover all columns and rows,
-    for ( unsigned int row = 0 ; row < mask_matrix.rows ; row++ ) {
-        for ( unsigned int col = 0 ; col < mask_matrix.cols ; col++ ) {
+    for ( int row = 0 ; row < mask_matrix.rows ; row++ ) {
+        for ( int col = 0 ; col < mask_matrix.cols ; col++ ) {
             if ( mask_matrix(row,col) == PRIME ) {
                 mask_matrix(row,col) = NORMAL;
             }

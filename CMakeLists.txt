@@ -18,30 +18,30 @@ find_package (OpenCV)
 
 include_directories( src ${OpenCV_INCLUDE_DIRS} )
 
-add_library(munkres STATIC src/munkres.cpp)
+add_library(munkres-opencv STATIC src/munkres.cpp)
 
-target_include_directories(munkres
+target_include_directories(munkres-opencv
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
 )
 
-set_target_properties(munkres PROPERTIES
+set_target_properties(munkres-opencv PROPERTIES
   POSITION_INDEPENDENT_CODE TRUE
   VERSION ${PROJECT_VERSION}
-  PUBLIC_HEADER src/munkres.h
+  PUBLIC_HEADER src/munkres-opencv.h
 )
 
-install(TARGETS munkres EXPORT munkres-targets
+install(TARGETS munkres-opencv EXPORT munkres-opencv-targets
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/src
   INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
   )
 
-install(EXPORT munkres-targets
-  DESTINATION lib/cmake/munkres
-  FILE munkres-config.cmake
+install(EXPORT munkres-opencv-targets
+  DESTINATION lib/cmake/munkres-opencv
+  FILE munkres-opencv-config.cmake
 )
 
 add_executable (demo demo.cpp)
-target_link_libraries(demo munkres ${OpenCV_LIBS})
+target_link_libraries(demo munkres-opencv ${OpenCV_LIBS})
