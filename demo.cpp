@@ -31,16 +31,16 @@
 int
 main(int argc, char *argv[]) {
 	int nrows = 4;
-	int ncols = 3;
+	int ncols = 20;
 	
 	if ( argc == 3 ) {
 		nrows = atoi(argv[1]);
 		ncols = atoi(argv[2]);
 	}
 	
-    cv::Mat_<int> matrix(nrows, ncols);
+	cv::Mat_<int> matrix(nrows, ncols);
 	
-    //	srandom(time(NULL)); // Seed random number generator.
+	srandom(time(NULL)); // Seed random number generator.
 	std::mt19937 eng((std::random_device())());
 	std::uniform_int_distribution<> dist(1,50);
     
