@@ -77,26 +77,5 @@ main(int argc, char *argv[]) {
     
 	std::cout << std::endl;
     
-	
-	for ( int row = 0 ; row < nrows ; row++ ) {
-		int rowcount = 0;
-		for ( int col = 0 ; col < ncols ; col++  ) {
-			if ( matrix(row,col) == 0 )
-				rowcount++;
-		}
-		if ( rowcount != 1 )
-			std::cerr << "Row " << row << " has " << rowcount << " columns that have been matched." << std::endl;
-	}
-    
-	for ( int col = 0 ; col < ncols ; col++ ) {
-		int colcount = 0;
-		for ( int row = 0 ; row < nrows ; row++ ) {
-			if ( matrix(row,col) == 0 )
-				colcount++;
-		}
-		if ( colcount != 1 )
-			std::cerr << "Column " << col << " has " << colcount << " rows that have been matched." << std::endl;
-	}
-    
 	return 0;
 }

@@ -1,7 +1,8 @@
 munkres-opencv
 ===========
 
-An implementation of the Kuhn–Munkres algorithm by from John Weaver.
+An implementation of the Kuhn–Munkres algorithm by from John Weaver
+adapted for openCV
 
 https://thereaderwiki.com/en/Munkres%27_assignment_algorithm
 
@@ -29,5 +30,7 @@ Port to OPENCV by Shen Yiming 2014
 cmake by Bernd Porr 2021
 
 Copyright (c) 2007-2013 John Weaver and contributors.
+
+https://github.com/saebyn/munkres-cpp
 
 Licensed under the GPLv2. See the file COPYING for details.
