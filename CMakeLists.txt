@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.1.0)
 include(FetchContent)
 
+enable_testing()
+add_subdirectory(test)
+
+
 cmake_policy(SET CMP0048 NEW) # set VERSION in project()
 cmake_policy(SET CMP0042 NEW) # enable MACOSX_RPATH by default
 
@@ -8,7 +12,7 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 	set(CMAKE_BUILD_TYPE "RelWithDebInfo")
 endif()
 
-project(Munkres VERSION 1.0.0 LANGUAGES CXX)
+project(Munkres-OpenCV VERSION 1.0.0 LANGUAGES CXX)
 include(GNUInstallDirs)
 set(CMAKE_CXX_STANDARD 11)
 
@@ -18,7 +22,7 @@ find_package (OpenCV)
 
 include_directories( src ${OpenCV_INCLUDE_DIRS} )
 
-add_library(munkres-opencv STATIC src/munkres.cpp)
+add_library(munkres-opencv STATIC src/munkres-opencv.cpp)
 
 target_include_directories(munkres-opencv
   PUBLIC

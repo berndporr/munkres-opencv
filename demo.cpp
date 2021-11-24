@@ -26,7 +26,7 @@
 #include <random>
 #include <opencv2/opencv.hpp>
 
-#include "munkres.h"
+#include "munkres-opencv.h"
 
 int
 main(int argc, char *argv[]) {
