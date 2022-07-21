@@ -28,6 +28,13 @@
 
 #include "munkres-opencv.h"
 
+static unsigned long getTimeMS() {
+		std::chrono::time_point<std::chrono::system_clock> now = 
+			std::chrono::system_clock::now();
+		auto duration = now.time_since_epoch();
+		return (unsigned long)std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
+	}
+
 int
 main(int argc, char *argv[]) {
 	int nrows = 4;
@@ -64,7 +71,9 @@ main(int argc, char *argv[]) {
 	// Apply Munkres algorithm to matrix.
 	Munkres m;
 	m.diag(false);
+	long t1 = getTimeMS();
 	m.solve(matrix);
+	long t2 = getTimeMS();
     
 	// Display solved matrix.
 	for ( int row = 0 ; row < nrows ; row++ ) {
@@ -77,5 +86,7 @@ main(int argc, char *argv[]) {
     
 	std::cout << std::endl;
     
+	printf("It took %ld ms to calculate\n",t2-t1);
+
 	return 0;
 }

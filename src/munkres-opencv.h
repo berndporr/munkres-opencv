@@ -25,8 +25,7 @@
 
 class Munkres {
 public:
-    Munkres();
-    ~Munkres(){};
+    Munkres() = default;
     void solve(cv::Mat_<int> &m);
     void diag(bool);
 private:
@@ -47,7 +46,7 @@ private:
     bool *row_mask;
     bool *col_mask;
     unsigned int saverow, savecol;
-    bool isDiag;
+    bool isDiag = false;
 };
 
 #endif /* !defined(_MUNKRES_H_) */

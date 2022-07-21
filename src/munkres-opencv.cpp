@@ -524,10 +524,6 @@ Munkres::solve(cv::Mat_<int> &m) {
     delete [] col_mask;
 }
 
-Munkres::Munkres(){
-    isDiag = false;
-}
-
 void Munkres::diag(bool status){
     isDiag = status;
 }
